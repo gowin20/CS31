@@ -1,0 +1,181 @@
+hw.txt
+
+Project 6
+George Owen
+David Smallberg / TA Tao Zhou
+Nov. 25th, 2018
+gowin@g.ucla.edu
+
+1.
+	a.
+		int main()
+		{
+			int arr[3] = { 5, 10, 15 };
+			int* ptr = arr;
+
+			*ptr = 10;          // set arr[0] to 10
+			*(ptr + 1) = 20;      // set arr[1] to 20
+			ptr += 2;
+			ptr[0] = 30;        // set arr[2] to 30
+
+			while (ptr >= arr)
+			{
+				cout << *ptr << endl;    // print values
+				ptr--;
+			}
+		}
+		Changes made: 
+		Swapped the values of arr[0] and arr[2], so it prints 30, 20, 10 instead of 10, 20, 30.
+		Added parentheses to the line setting arr[1] to 20, so it functions properly
+		Moved ptr--; to after the cout statement in the while loop.
+
+		b.
+		There's really only one problem with this function: It doesn't do anything outside of the function itself. Since no values of the array are being modified and no values are passed by reference, the variable pToMax is local and does not affect anything outside of the findMax function. This can be fixed by adding an & to pToMax in the function declaration, so that the value of the pointer being passed is changed outside the scope of the function.
+		
+		void findMax(int arr[], int n, int*& pToMax)
+		{
+			if (n <= 0)
+				return;      // no items, no maximum!
+
+			pToMax = arr;
+
+			for (int i = 0; i < n; i++)
+			{
+				if (arr[i] > *pToMax)
+					pToMax = arr + i;
+			}
+		}
+		
+		
+	c.
+		In the main function, the pointer ptr is being passed to computeCube without an assigned value. The cout statement doesn't work either, as *ptr is undefined at this point. This can be fixed by assigning ptr to a specific memory address before being passed to computeCube.
+
+		int main()
+		{
+			int value;
+			int* ptr = &value;
+			computeCube(5, ptr);
+			cout << "Five cubed is " << *ptr << endl;
+		}
+	
+	d.
+		There are several problems with this function. In all cases where str1 and str2 are used, the function should be checking specific characters of the string, not the entire string. This can be fixed by creating a dummy variable i used to run through the strings and refer to specific characters. Additionally, the while loop should be checking if the char is equal to '\0', not if the string is equal to 0. Finally, the return value should call strlen() as that is the proper way to check c-string length.
+
+		bool strequal(const char str1[], const char str2[])
+		{
+			int i = 0;
+			while (str1[i] != '\0' && str2[i] != '\0')
+			{
+				if (str1[i] != str2[i])  // compare corresponding characters
+					return false;
+				i++;            // advance to the next character
+			}
+			return strlen(str1) == strlen(str2);   // both ended at same time?
+		}
+	
+	e. 
+		This program does not function properly becuase the pointer ptr is referencing an array which only exists in the function getPtrToArray. This means that the array is only within the scope of getPtrToArray, and as a result its memory will be deallocated after execution. When referenced in main() it will produce silly numbers. If the array was defined within main(), it wouldn't be a problem.
+
+2.
+	a. double* cat;
+	b. double mouse[5];
+	c. cat = &mouse[4];
+	d. *cat = 25;
+	e. *(mouse + 3) = 42;
+	f. cat -= 3;
+	g. cat[1] = 27;
+	h. cat[0] = 54;
+	i. bool b = (*cat == *(cat + 1));
+	j. bool d = (cat == mouse);
+	
+3.
+	a.
+		double mean(const double* scores, int numScores)
+		{
+			int i = 0;
+			double tot = 0;
+			while (i < numScores)
+				{
+				tot += *(scores + i);
+				i++;
+				}
+			return tot / numScores;
+		}
+	
+	b.
+		const char* findTheChar(const char* str, char chr)
+		{
+			for (int k = 0; *(str + k) != '\0'; k++)
+				if (*(str + k) == chr)
+					return (str + k);
+					
+			return nullptr
+		}
+		
+	c.
+		const char* findTheChar(const char* str, char chr)
+		{
+			while (*str != '\0')
+			{
+				if (*str == chr)
+					return str;
+				str++;
+			}
+			return nullptr;
+		}
+
+4.
+	This program prints:
+		3					
+		4					
+		79
+		-1
+		9
+		22
+		19
+		
+		The first value is 3 because the program prints &array[5] - ptr, where ptr is equal to &array[2]. 
+		The rest of the printed values are the values of the array, from array[0] up to array[5]. 
+		The next line prints 4 because array[0]'s value was swapped with array[2] to become 4, done by the swap2 function. This value is unaffected by the swap1 function because that function modifies pointers within the function, and does not actually change the assigned values of the array. 
+		The next line is 79 because the main routine sets the value of the second element of the array, or *(array + 1), to 79. 
+		The fourth printed value is -1 because array[2]'s initial value of 4 was swapped with array[0]'s value, which was set to -1 because ptr was set to &array[0] by the maxwell function. 
+		The fifth value is 9 because ptr[1], which is equal to array[3] as a result of ptr's previous value of array[0] being increased by 2, is set to 9.
+		The sixth and seventh values are 22 and 19 because they are initialized as such in the program, and are not modified afterwards.
+
+5.
+	void removeS(char* string)
+	{
+		for (char* sloc = string; *(string - 1) != '\0'; string++)
+		{
+			if ((*string == 's') || (*string == 'S'))
+				continue;
+
+			*sloc = *string;
+			sloc++;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+

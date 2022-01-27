@@ -1,0 +1,115 @@
+report.txt
+
+1. Obstacles I Overcame
+
+	I had to overcome several notable challenges throughout this project. The first of these was figuring out an efficient way to check that the functions' input 
+	is valid. I ended up defining a seperate function called hasProperSyntax that is called at the beginning of every function, which prompts the function to return
+	-1 if its conditions are not met. The other major obstacles I faced in writing this program were the flip and divide functions, which I wrote without 
+	initializing additional arrays for those sweet bonus points. For flip, I used two variables i and j that started at either end of the array, and swapped the 
+	values of a[i] and a[j] until they met in the middle. Divide was the most intimidating function at first glance, but ended up being surprisingly simple once I 
+	realized I could call the rotateLeft function and make it vastly simpler. The last thing that gave me a bit of trouble was the subsequence function, which kept 
+	giving me inconsistent results until I discovered I had made an error in writing it.
+
+2. List of Test Data
+
+Some data that can be used to thoroughly test every function
+
+string h[7] = { "greg", "gavin", "ed", "xavier", "", "eleni", "fiona" };
+string g[4] = { "greg", "gavin", "fiona", "kevin" };
+string e[4] = { "ed", "xavier", "", "eleni" };
+string f[3] = { "fiona", "ed", "john" };
+string data[10] = { "uno", "deux", "san", "death", "five", "6ix9ine", "7even", "eight", "NINE", "tenth" };
+string candidate[6] = { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" };
+
+
+AppendToAll (string a[], int n, string value)
+	Valid Input: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, "!!!"
+	array of empty strings: {""}, 1, "!!!"
+	n less than the number of elements in the array: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 2, "!!!"
+	n less than 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, -3, "!!!"
+	n equal to 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 0, "!!!"
+	Empty value: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, ""
+	
+Lookup (const string a[], int n, string target)
+	Valid Input: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, "zed"
+	array of empty strings: {""}, 1, "zed"
+	n less than the number of elements in the array: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 3, "zed"
+	n less than 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, -2, "zed"
+	n equal to 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 0, "zed"
+	Empty target: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, ""
+	
+PositionOfMax (const string a[], int n)
+	Valid Input: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6
+	array of empty strings: {""}, 1
+	n less than the number of elements in the array: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 3
+	n less than 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, -4
+	n equal to 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 0
+	no maximum is present: { "zed", "zed", "zed", "zed" }, 4
+	
+RotateLeft (string a[], int n, int pos)
+	Valid Input: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, 0
+	array of empty strings: {""}, 1, 3
+	n less than the number of elements in the array: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 2, 0
+	n less than 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, -4, 0
+	n equal to 0:{ "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 0, 0
+	pos outside the known bounds of the array: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 3, 10
+	
+CountRuns (const string a[], int n)
+	Valid Input: { "etho", "rembrandt", "zed", "zed", "zed", "norman" }, 6
+	array of empty strings: {"", "", ""}, 3
+	n less than the number of elements in the array: { "etho", "rembrandt", "zed", "zed", "zed", "norman" }, 2
+	n less than 0: { "etho", "rembrandt", "zed", "zed", "zed", "norman" }, -6
+	n equal to 0: { "etho", "rembrandt", "zed", "zed", "zed", "norman" }, 0
+	no runs are present: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6
+	
+Flip (string a[], int n)
+	Valid Input: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6
+	array of empty strings: {"", "", ""}, 3
+	n less than the number of elements in the array: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 3
+	n less than 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, -4
+	n equal to 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 0
+	n is an odd number: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 5
+	n is an even number: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 4
+	
+Differ (const string a1[], int n1, const string a2[], int n2)
+	Valid Input: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, 6
+	array of empty strings: {"", ""}, 2, {"norman", "greg", michael"}, 3 
+	n1/n2 less than the number of elements in array 1/2: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 4, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, 3
+	n1/n2 less than 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, -6, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, -6
+	n1/n2 equal to 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 0, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, 0
+	n2 greater than n1: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 2, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, 5
+	array 1 and array 2 are equal: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, { "etho", "rembrandt", "zed", "michaelangelo" }, 4
+	array 1 and array 2 contain no similar elements: { "remy", "blemy", "schemy" }, 3, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, 6
+	
+Subsequence (const string a1[], int n1, const string a2[], int n2)
+	Valid Input: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, { "etho", "rembrandt" }, 2
+	array of empty strings: {"", "", ""}, 3, {"", ""}, 2
+	n1/n2 less than the number of elements in array 1/2: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 4, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, 3
+	n1/n2 less than 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, -6, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, -6
+	n1/n2 equal to 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 0, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, 0
+	n2 greater than n1: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 2, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, 5
+	array 1 and array 2 are equal: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, { "etho", "rembrandt", "zed", "michaelangelo" }, 4
+	array 1 and array 2 contain no similar elements: { "remy", "blemy", "schemy" }, 3, { "etho", "rembrandt", "norman", "michaelangelo", "prison mike", "zed" }, 6
+	
+LookupAny (const string a1[], int n1, const string a2[], int n2)
+	Valid Input: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, { "etho", "rembrandt" }, 2
+	array of empty strings: {"","", ""}, 3, {"", ""}, 2
+	n less than the number of elements in the array: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 4, { "etho", "rembrandt" }, 1
+	n less than 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, -1, { "etho", "rembrandt" }, -4
+	n equal to 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 0, { "etho", "rembrandt" }, 0
+	no values of a2 match any values of a1: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, { "ergo", "remy" }, 2
+	
+Divide (string a[], int n, string divider)
+	Valid Input: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, "doc"
+	array of empty strings: {"", "", ""}, 6, "doc"
+	divider is an empty string: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 6, ""
+	n less than the number of elements in the array: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 3, "doc"
+	n less than 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, -6, "doc"
+	n equal to 0: { "etho", "rembrandt", "zed", "michaelangelo", "prison mike", "norman" }, 0, "doc"
+	array is already sorted: {a, b, c, d, e, f, g}, 7, "e"
+	there are no values in the array >= divider: {a, b, c}, 3, "d"
+	
+
+
+
+

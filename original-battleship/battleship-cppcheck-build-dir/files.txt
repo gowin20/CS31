@@ -1,0 +1,4 @@
+battleship.a1:Debug|Win32:C:/Users/gboow/source/repos/Battleship/Battleship/battleship.cpp
+battleship.a2:Release|Win32:C:/Users/gboow/source/repos/Battleship/Battleship/battleship.cpp
+battleship.a3:Debug|x64:C:/Users/gboow/source/repos/Battleship/Battleship/battleship.cpp
+battleship.a4:Release|x64:C:/Users/gboow/source/repos/Battleship/Battleship/battleship.cpp

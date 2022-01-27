@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="3959412160">
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Arena::m_Ships&apos; is not initialized in the constructor." verbose="Member variable &apos;Arena::m_Ships&apos; is not initialized in the constructor." cwe="398">
+            <location file0="C:\Users\gboow\source\repos\Battleship\Battleship\battleship.cpp" file="C:\Users\gboow\source\repos\Battleship\Battleship\battleship.cpp" line="244"/>
+            <symbol>Arena::m_Ships</symbol>
+        </error>
+        <error id="noCopyConstructor" severity="style" msg="Class &apos;Game&apos; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &apos;Game&apos; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file0="C:\Users\gboow\source\repos\Battleship\Battleship\battleship.cpp" file="C:\Users\gboow\source\repos\Battleship\Battleship\battleship.cpp" line="389"/>
+            <symbol>Game</symbol>
+        </error>
+        <error id="noOperatorEq" severity="style" msg="Class &apos;Game&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &apos;Game&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file0="C:\Users\gboow\source\repos\Battleship\Battleship\battleship.cpp" file="C:\Users\gboow\source\repos\Battleship\Battleship\battleship.cpp" line="389"/>
+            <symbol>Game</symbol>
+        </error>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="determineNewPosition" lineNumber="146"/>
+    <functiondecl functionName="isDead" lineNumber="177"/>
+    <functiondecl functionName="setDead" lineNumber="205"/>
+    <functiondecl functionName="row" lineNumber="227"/>
+    <functiondecl functionName="col" lineNumber="232"/>
+    <functiondecl functionName="type" lineNumber="237"/>
+    <functiondecl functionName="rows" lineNumber="267"/>
+    <functiondecl functionName="cols" lineNumber="272"/>
+    <functiondecl functionName="checkSunk" lineNumber="277"/>
+    <functiondecl functionName="makeShips" lineNumber="286"/>
+    <functiondecl functionName="shipPresent" lineNumber="303"/>
+    <functiondecl functionName="Display" lineNumber="313"/>
+    <functiondecl functionName="play" lineNumber="398"/>
+    <functiondecl functionName="randInt" lineNumber="443"/>
+    <functiondecl functionName="clearScreen" lineNumber="453"/>
+    <functiondecl functionName="main" lineNumber="459"/>
+    <functioncall functionName="Arena"/>
+    <functioncall functionName="BATTLESHIP"/>
+    <functioncall functionName="Display"/>
+    <functioncall functionName="Game"/>
+    <functioncall functionName="MAX_COLS"/>
+    <functioncall functionName="MAX_ROWS"/>
+    <functioncall functionName="MAX_SHIPS"/>
+    <functioncall functionName="Ship"/>
+    <functioncall functionName="aliveShips"/>
+    <functioncall functionName="ap"/>
+    <functioncall functionName="break"/>
+    <functioncall functionName="c"/>
+    <functioncall functionName="char"/>
+    <functioncall functionName="checkSunk"/>
+    <functioncall functionName="clearScreen"/>
+    <functioncall functionName="col"/>
+    <functioncall functionName="cols"/>
+    <functioncall functionName="continue"/>
+    <functioncall functionName="default"/>
+    <functioncall functionName="determineNewPosition"/>
+    <functioncall functionName="dir"/>
+    <functioncall functionName="distro"/>
+    <functioncall functionName="exit"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="g"/>
+    <functioncall functionName="generator"/>
+    <functioncall functionName="i"/>
+    <functioncall functionName="ideallength"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="ignore"/>
+    <functioncall functionName="inputRow"/>
+    <functioncall functionName="isDead"/>
+    <functioncall functionName="isdigit"/>
+    <functioncall functionName="j"/>
+    <functioncall functionName="m_col"/>
+    <functioncall functionName="m_cols"/>
+    <functioncall functionName="m_direction"/>
+    <functioncall functionName="m_length"/>
+    <functioncall functionName="m_nShips"/>
+    <functioncall functionName="m_row"/>
+    <functioncall functionName="m_rows"/>
+    <functioncall functionName="m_sunk"/>
+    <functioncall functionName="m_type"/>
+    <functioncall functionName="makeShips"/>
+    <functioncall functionName="max"/>
+    <functioncall functionName="min"/>
+    <functioncall functionName="numShips"/>
+    <functioncall functionName="play"/>
+    <functioncall functionName="r"/>
+    <functioncall functionName="randInt"/>
+    <functioncall functionName="rd"/>
+    <functioncall functionName="row"/>
+    <functioncall functionName="rows"/>
+    <functioncall functionName="setDead"/>
+    <functioncall functionName="shipPresent"/>
+    <functioncall functionName="ship_type"/>
+    <functioncall functionName="swap"/>
+    <functioncall functionName="switch"/>
+    <functioncall functionName="targetColumn"/>
+    <functioncall functionName="targetRow"/>
+    <functioncall functionName="tempcol"/>
+    <functioncall functionName="temprow"/>
+    <functioncall functionName="this"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="type"/>
+    <functioncall functionName="while"/>
+  </FileInfo>
+</analyzerinfo>

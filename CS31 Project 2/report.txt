@@ -1,0 +1,28 @@
+report.txt
+
+A. I overcame several notable obstacles while writing this program. The first major roadblock was figuring out how to properly display the error text. My initial thought was to have the program output an error immediately upon an invalid input, but that's not what the spec required. Instead, I opted to create an integer 'error' that is assigned a value when an exception was caught. Based on the value of error, different error messages display, with the program running properly if error is 0. 
+
+The other major difficulty for me was figuring out the proper way to calculate the per mile part of the rental cost. I initially thought the calculation would be like a piecewise function, where different distances are priced differently depending on their range, but this was not the case. It ended up being more like finding the integral of a piecewise function, where you take the price of each section and summ them all together. I'm still not sure that my method of doing this is the most efficient, but I essentially divided the process into three sections, calculated the cost of each and summed them. The value of each part depends on the distance travelled - for example, if the odometer increased by 95 miles, the first part of the per mile cost will be (0.27 * 95), or 25.65, and the second/third parts will both be 0. The second part will be greater than zero if the distance travelled passes 100 miles, and the third part will be greater than 0 if it passes 400 miles.
+
+
+
+B. Data inputs that can thoroughly test my program:
+(Format is: initial Odometer, final Odometer, amount of days, person's name, luxury car, rental month)
+
+Cost of a luxury car (10, 150, 3, Gill Bates, y, 5)
+Cost of a nonluxury car (10, 150, 3, Gill Bates, n, 5)
+Renting in a winter month (10, 150, 3, Gill Bates, y, 2) (10, 150, 3, Gill Bates, y, 12)
+Renting in a nonwinter month (10, 150, 3, Gill Bates, y, 5)
+Renting for multiple days (10, 150, 3, Gill Bates, y, 5)
+Travelling less than 100 miles (10, 100, 3, Gill Bates, y, 5)
+Travelling exactly 100 miles (50, 150, 3, Gill Bates, y, 5)
+Travelling between 100 and 400 miles (10, 150, 3, Gill Bates, y, 5)
+Travelling exactly 400 miles (50, 450, 3, Gill Bates, y, 5)
+Travelling more than 400 miles (10, 650, 3, Gill Bates, y, 5)
+Travelling a lot more than 400 miles (10, 500000, 10, Gill Bates, y, 5)
+Having an initial odometer reading less than 0 (-10, 150, 3, Gill Bates, y, 5)
+Having a final odometer reading less than the initial reading (150, 10, 3, Gill Bates, y, 5)
+Having a nonpositive amount of days(10, 150, -1, Gill Bates, y, 5)
+Not entering a name (the string is NULL) (10, 150, 3, (nothing), y, 5)
+Not entering y/n for the value of lux (10, 150, 3, Gill Bates, (nothing), 5)
+Entering a month that doesn't exist (10, 150, 3, Gill Bates, y, 13) 

@@ -1,0 +1,1042 @@
+
+MIDTERM ONE STUFF
+
+string s;
+getline(cin, s);
+if (s != "")			//s.size() > 0
+{
+	s[0] = toupper(s[0]);
+}
+
+
+if (t[k] == 'E' || t[k] == 'e')
+if (toupper(t[k]) == 'E')
+//using toupper to make code more concise
+
+toupper(s) // takes a character, not a string. If you give it a string it won't compile.
+toupper(s[0]); //compiles, but is useless
+
+k = 3 + 5; 
+n = 2 * (k = 3+5); //this does work. It sets k to 8, and n to 16. why would you ever do this, though. it's bad form.
+3 + 5; //does literally nothing
+greet(3, "Hello"); //this doesn't return anything but does do things
+sin(3.14159); //another useless statement. it returns a value, but since we're not doing anything with the sin we find, there's like no point at all
+
+void exchange(int& x, int& y);
+
+int main()
+{
+	...
+	int a;
+	int b;
+	cin >> a >> b;
+	if (a < b)
+		exchange(a,b);
+	cout << a << " is at least as big as " << b << endl;
+}
+void exchange(int& x, int& y)				
+		//int& declares them as reference integers, instead of new integers. This means that x/y is simply another name for a/b, and as such when x is changed, a will be changed accordingly.
+{
+	int t = x; //best way to swap variable values. Use a dummy third placeholder variable to help out.
+	x = y;
+	y = t;
+}
+
+
+cout << "Enter a phone number: ";
+string phone;
+getline(cin, phone);
+while ( ! isValidPhoneNumber(phone))
+{
+	cout << "A phone number must have 10 digits, try again." << endl;
+	cout << "Enter a phone number: ";
+	getline(cin, phone);
+}
+cout << "The digits in the number are " << digitsOf(phone) << endl;
+
+//this (\/) does exactly the same thing as this (^), but is more concise and less repetitive. Loops are powerful, and break statements are useful
+break; 		//breaks you out of the nearest enclosing switch or loop. Causes a transfer of control to the next line of code after the loop
+//works well when you have to check a thing in the middle of the loop, instead of the beginning or end.
+
+
+string phone;
+while (true) 					//this is the exact same thing as writing 'for (;;)' - they're both infinite loops, and the only way to break out is to have abreak
+{
+	cout << "Enter a phone number: ";
+	getline(cin, phone);
+	if (isValidPhoneNumber(phone))
+		break;
+	cout << "A phone number must have 10 digits, try again." << endl;
+}
+
+^ is often called an "N-and-a-half-times loop"
+
+
+for (......; .........; .......)
+{
+	...
+	...
+	if (....)
+	{
+		.... short thing
+		continue;							//abandon the rest of the current iteration of the loop, but move on to the next iteration. A transfer of control to the beginning of the loop.
+	}
+	....
+	....
+	....
+	....
+	....
+	....
+}
+
+encoding stuff:
+
+char ch = 76 		//'L' if ASCII is the encoding, '<' if EBCDIC
+int k = 'L'			//76 if ASCII, 211 if EBCDIC
+
+
+in ASCII, all uppercase letters have a lower number than lowercase letters. in EBCDIC, this is reversed (lowercase letters have lower values than uppercase letters)
+'a' < 'b'		'b' < 'c'	...	'y' < 'z'
+'A' < 'B'		'B' < 'C'	...	'Y' < 'Z'
+
+'0'		'1'		'2'
+
+ch++; //now it's 77 instead of 76. 'M' if ASCII, '(' is EBCDIC
+k = 77;	//same thing ^^
+
+double d = 3.68;
+cout.setf(ios::fixed);
+cout.precision(1);
+cout << d;		//calls the functino for double, writes "3"	"."	"7"
+								//if ASCII, this converts to 51	 46	 55
+								//if EBCDIC, this converts to 243	75	 247
+cout << k;		//calls the function for int, writes '7'  '7'
+								//is ASCII, this is 55	55
+								//if EBCDIC, this is 247  247
+cout << ch;		//calls the function for char, writes 'M' if ASCII, '(' if EBCDIC
+								//if ASCII, this is 77
+								//if EBCDIC, this is 77
+string s = "A7"
+cout << s;		//calls the function for string, writes 'A'  '7'
+								//if ASCII, this is 65  55
+								//if EBCDIC, this is 193  247
+
+if (ch == 'L')
+if (ch == k)
+if (ch == 77)
+if ((ch >= 'A' && ch <= 'D') || ch == 'F')
+
+c = a + b * d
+
+//most of the time, the order in which the operands are evaluated doesn't matter  - but, it might if you're calling a function that takes user input.
+
+
+#include <cmath>
+using namespace std;
+
+void polarToCartesian(double rho, double theta, double xx, double yy);
+
+
+int main()
+{
+	double r;
+	double angle;
+	... //get values for r and angle;
+	double x;
+	double y;
+	polarToCartesian(r, angle, x, y);
+	...
+	double x2;
+	polarToCartesian(2*r, angle, x2, y);
+	...
+}
+
+void polarToCartesian(double rho, double theta, double xx, double yy)
+{
+	xx = rho * cos(theta);
+	yy = rho * sin(theta);
+}
+
+
+
+double means a memory location that can hold a double
+double& means 'another name for an already existing double'
+
+"reference-to-double"
+
+"passing by value" ==> COPY
+"passing by reference" ==> no copy, just another name for the original
+
+
+
+what should I shout? Hello there!
+HELLO THERE!
+GENERAL KENOBI
+
+void makeUpperCase(string& s);
+
+int main()
+{
+	cout << "What should I shout? ";
+	string msg;
+	getline(cin, msg);
+	makeUpperCase(msg);
+	cout << msg << endl;
+}
+
+void makeUpperCase(string& s)
+{
+	for (int k = 0; k != s.size(); k++)
+	{
+		s[k] = toUpper(s[k]);
+	}
+}
+
+
+
+
+
+
+
+
+int main()
+{
+	cout << "Enter a phone number: ";
+	string phone;
+	getline(cin, phone);
+	if (isValidPhoneNumber(phone))
+	{
+		cout << "The digits in the number are " << digitsOf(phone) << endl;
+	}
+	else
+	{
+		cout << "A phone number must have 10 digits" << endl;
+	}
+}
+
+bool isValidPhoneNumber(string pm)
+{
+	int numberOfDigits = 0;
+	for (int k = 0; k != pm.size(); k++)
+	{
+		if (.... pm[k] is a digit ...)
+		{
+			numberOfDigits++;
+		}
+	}
+	return (numberOfDigits == 10);
+}
+
+string digitsOf(string pm)
+{
+	string digitsOnly = "";
+	for (int k = 0; k != pm.size(); k++)
+	{
+		if (isDigit(pm[k])
+		{
+			digitsOnly == pm[k];
+		}
+	}
+	return digitsOnly;
+}
+
+isDigit(ch)	'0'	'1'	'2'	...	'9'
+islower(ch)	'a'	'b'	'c'	...	'z'
+isupper(ch)	'A'	'B'	'C'	...	'Z'
+isalpha(ch)	'a'	...	'z'	'A'	...	'Z'
+
+
+
+
+
+bool 								//Boolean		George Bool, developed the algebra of and/or/whatever
+
+
+palindromes - popular on interviews and stuff
+
+
+1/(sqrt(x))
+
+dune - metaphor for building something up over time, impossible/very hard to destroy quickly bc of the way it's built
+
+operator bool() - convert things to booleans
+
+auto - automatically determines the variable type, if you're too lazy to do it yourself
+
+auto s0 = 5; //becomes an int
+auto s1 = 5U; //becomes an unsingned int
+
+
+
+
+int foo(int x);
+
+
+int main()
+{
+	greet(2, "Hello There!"); //feeding an integer + string into the greet function. this makes it say "Hello There!" twice
+	
+	greet(4, "GENERAL KENOBI);
+	
+	greet(6, "This will make a fine addition to my collection");
+
+	string m;
+	getline(cin, m);
+	greet(2, m);
+}
+
+void greet(int nTimes, string msg) //function greet, doesn't return anything (is a void), but accepts an integer and string as input
+{
+	for (int k = 0; k < nTimes; k++) 
+	{
+		cout << msg << endl;
+	}
+}
+
+
+
+for (int r = 1; r <= 3; r++)
+{
+	for (int c = 1; c <= 4; c++)
+	{
+		cout << "*";
+	}
+	cout << endl;
+}
+
+
+char:			01234
+			s = Hello
+	
+string s = "Hello";
+for (int k = 0; k != s.size(); k++)
+	cout << s[k] << endl;                          //"the character at position k in string s"
+
+
+cout << "Enter some text: ";
+string t;
+getline(cin, t);
+int numberofEs = 0;
+for (int k = 0; k != t.size(); k++)
+{
+	if (t[k] == 'E' || == 'e')
+		numberofEs++
+}
+cout << "The number of Es (upper and lower case) is " << numberofEs << endl;
+
+
+string s = "Hello"; 				//s is a string
+char c = s[1];						//c is a char (initialized to lower case e)
+
+char examples:
+'a'		'&'		' '		'4'		'\n'
+
+
+while:
+1. Evaluate the condition
+	if true,
+		2. do stuff
+		go back to 1
+	if false,
+		exit the loop
+		
+do-while
+1. do stuff
+2. Evaluate the condition
+	if true,
+		Go back to 1
+	if false,
+		exit the loop
+
+for loop
+1. Execute initialization
+2. Evaluate the condition
+	
+	
+	How do you make this:
+	
+	N   N
+	NN  N
+	N N N
+	N  NN
+	N   N
+
+#include <iostream>
+#include <string>
+using namespace std;	
+int main()
+{
+	int size;
+	cout << "How big is he bb? " << endl;
+	cin >> size;
+	size -= 1;
+	for (int i = 0; i <= size; i++)
+	{
+		cout << "N";
+		for (int j = 1; j < size; j++)
+		{
+			if (j == i)
+			{
+				cout << "N";
+			}
+			else
+			{
+				cout << " ";
+			}
+		}
+		cout << "N" << endl;
+	}
+}
+
+#include <iostream>
+using namespace std;
+
+int longestRun(int a[], int n, int& value);
+
+int main() {
+	int data[10] = {
+		9, 7, 7, 7, 5, 6, 6, 6, 6, 8
+	};
+	int v;
+	int len = longestRun(data, 10, v);
+	cout << len << ' ' << v << endl;
+
+	len = longestRun(data, 5, v);
+	cout << len << ' ' << v << endl;
+
+	len = longestRun(data, 2, v);
+	cout << len << ' ' << v << endl;
+
+
+}
+
+int longestRun(int a[], int n, int& value)
+{
+	int streak = 1;
+	int run = 1;
+	value = a[0];
+	for (int i = 1; i < n; i++)
+	{
+		if (a[i] == a[i - 1])
+		{
+			streak += 1;
+			if (streak > run)
+			{
+				run = streak;
+				value = a[i];
+			}
+		}
+		else
+		{
+			streak = 1;
+		}
+	}
+	return run;
+
+}
+
+
+
+
+
+
+	
+		
+While loops vs For Loops
+	int n = o;
+	while (n < nTimes)
+	{
+	...
+	...
+	...
+	n++;
+	}
+
+	for (int n = 0; n < nTimes; n++)
+	{
+	...
+	...
+	...
+	}
+
+	for (initialization; stay-in-loop-condition; prepare-for-next-iteration)
+		statement
+
+	do-while loops are p rare compared to these 2
+	
+	
+	
+	for loop is used if there's a seperate thing to prepare for the next iteration
+	
+	while (promptForAnswer() == "yes")
+	{
+		...
+		...
+		...
+	}
+	
+	for (int n = 10; n <= 0; n--)
+		cout << n << endl;
+	
+	for (int k = 1; k  < 1000; k *= 2)
+		cout << k << endl;
+		
+	1
+	2
+	4
+	8
+	16
+	32
+	64
+	128
+	256
+	512
+	
+	
+cout <<"Hello Tao!!";   // --> Hello Tao!!
+cout << "Hello \"Tao"\!!"; --> Hello "Tao"!!
+
+cout<<5%2<<endl;
+
+flush data - take it from the memory and move it somewhere else
+
+endl flushes your code. \n (newline) does not.
+
+
+Char - single letters/digits/etc like "a" or "\" that 
+
+#include <cctype>
+
+GO ONLINE AND LOOK AT THE SLIDES, HE POSTED THEM IN THE DROPBOX
+
+statements - used to check for a value among a number of possible const expressions.
+expressions should be an int, or something equivalent (char or enum).
+Similar to concentrating if/else statements, but limited to constant expressions
+
+switch (expression) 
+{
+	case constant1: // 'a' for chars, 1 for ints
+		group-of-statements-1;
+		break;
+	case constant2: // 'b' for chars, 2 for ints
+		group-of-statements-2;
+		break;
+	default:
+		stuff;
+}
+
+int number
+int total
+int average
+
+cout << "how many are you tryna average?" << endl;
+cin n;
+for n in n
+	cout << "number" n ": ";
+	cin number;
+	total += number;
+
+average = total / number;
+cout << average;
+
+while loops
+
+while (stuff) 
+{
+stuff
+}
+
+ostream >> ()
+\n
+\t
+
+
+
+
+9
+8
+7
+6
+5
+4
+3
+2
+1'
+
+bressenham line algorithm
+algorithm that draws lines on the screen - a way to draw each pixel
+used because there's no multiplication or division.
+
+
+
+
+
+
+
+
+bool - type of variable
+
+capable of having 2 values: 0(false) or 1(true)
+
+
+Boolean Expressions
+	A > B
+	A >= B
+	A < B
+	A <= B
+	A != B //not equals
+	A == B //equals
+	A && B // AND
+	A || B // OR
+	
+	at least 	 --->	>=
+	at most   	 --->	<=
+	more than	 --->	>
+	less than	 --->	<
+	no more than --->	<=
+	no less than --->	>=
+	
+
+
+bool test;
+int x = 10;
+test = true;
+cout<<test<<endl;
+test = 1;
+cout<<test<<endl;
+test = 0;
+
+
+
+
+
+
+
+
+
+Lecture 4 (Week 2)
+
+
+
+Lecture 3 (Week 2)
+
+	#include <iostream>
+	#include <string> //not <string.h> or <cstring>
+
+	using namespace std
+
+	int main() {
+		cout << "what is your name? ";
+		string personsName;
+		getline(cin, personsName);
+		
+		cout << "how old are you? ";
+		int age:
+		cin >> age;
+		cin.ignore(100000, '\n'); //ignore and consume all characters up to and including the next new line (which is '\n'), or until you have consumed and 
+									//thrown way a certain amt of characters (here it's 100000)
+				
+		cout << "what is your quest? ";
+		string quest;
+		getline(cin, quest);
+		
+		
+		cout << "hello, brave " << personsName << "!" << endl;
+		cout << "you want " << quest << endl;
+		cout << "if you live, next year you will be " << (age + 1) << endl;
+		
+	}
+	
+	what is your name? SIR ROBIN
+	how old are you? 31
+	what is your quest?
+	
+	
+	if you read in a number, and the next thing you're gonna read in is a string using getline, that causes a problem. Fix: have a command that throws the extra stuff away. "ignore any characters that are still being held, up to a new line". that's cin.ignore(__,__). 
+	
+	
+	string s;
+
+//							OS Writes		OS Holds		Program Receives
+	getline(cin, s);														//	program waits for input
+//	You type X					X				X					__
+//	You type Y					Y				XY					__
+//	You type backspce			BkSpace			X					__
+//	You type Z					Z				XZ					__
+//	You type Enter				enter								XZ
+//																				getline executes, s is XZ
+	
+
+	
+	higher-level
+	
+	
+	
+Lecture 2 (Week 1)
+	Writing a program for a cooking robot
+
+	Ingredients
+		  \/
+	Recipe in ⇒  Cooking Robot ⇒  makes good cake
+	English
+
+	This robot (program) is actually 2 smaller robots
+
+							 Ingredients
+									\/
+	Recipe in ⇒ robot1 ⇒ Recipe in ⇒ robot2 ⇒ makes good cake
+	English     	     Chinese
+			
+
+	Robot 1 is simply a translator. Robot 2 is the actual robot, but it only accepts recipes written in chinese because made in chiynah.
+	An allegory for programming: When you execute code in a language (C++) robot1 first compiles your code and translates it into machine language, then robot2 executes it.
+
+	This means that there’s fundamentally 2 ways error can occur: in the compiler or in the executor.
+	Compilation error/Syntax error
+	Logic error/Runtime error (ysiv)    
+
+
+
+	f(x,y) = x^2 + y^2
+
+	f(x,y) = x*x + y*y
+
+	distanceFromOrigin(x,y) = sqrt(f(x,y))
+	distanceFromOrigin(3.7, 4.2)
+	[2]f … [1][1]@ [2][2]@ #
+	[3]g … 
+
+
+
+
+	Sample C++ program
+
+	#include <iostream> *
+	int main()
+	{
+		std::cout << “Hello World!” << std::endl;
+	}
+
+	You could leave out the std in front of everything if you insert “using namespace std;” near the beginning of the program
+
+	Iostream is part of the standard C++ library, but it’s not included baseline in every program for efficiency reasons.
+
+	There are certain words in a language that are part of the fundamental structure of that language, that are always there, for example conjunctions or particles, helper verbs like to be, have, etc. This is like the stuff that’s built-in to programming language, that forms the fundamental structure of it (int, etc for C++)
+
+	Other words are not. They’re part of a growing set of words that are more specific to the things you’re talking about. New words appear all the time, like “log” as a verb or “frindle” as an anything. That’s like the commands and functions you can get from libraries in code.
+
+
+	User Input
+	Appears on-Screen:
+	------------
+	How many hours did you work? 40
+	What is your hourly rate of pay? 16.13
+	You earned $645.20
+	$64.52 will be withheld
+	------------
+	Code:
+
+		#include <iostream>
+		Using namespace std
+
+		int main()
+		{
+			cout << “How many hours did you work? “;
+			double hoursworked;
+			cin >> hoursworked;
+
+			cout << “What is your hourly pay rate? “;
+			double payrate;
+			cin >> payrate;
+
+			cout << “the numbers are ” << hoursworked << endl;
+			cout << “other number is “ << payrate << endl;
+			
+			double amtearned = hoursworked * payrate;
+			
+			cout.setf(ios::fixed); //sets cout to display decimals instead of scientific notation
+			cout.precision(2); 	//sets cout to display 2 decimal places
+			cout << "you earned $" << (amtearned) << endl;
+			double withholdingRate;
+			if (payrate > 18.00) 
+			{
+				withholdingRate = 0.10;
+				cout << "You're getting that bread, homie" << endl;
+			}
+			else
+			{
+				withholdingRate = 0.05;
+				cout << "You're really not living your best life bro. At least the government isn't stealing as much of your money. Fuck income tax."
+			}
+			cout << "$" << (withholdingRate * amtearned) << "will be withheld" << endl;
+		}
+
+		if (condition)
+			statementT
+		else
+			statementF
+		
+
+
+	{	stmt; stmt; stmt; }		//compount statement/block
+	
+	assignment statement:
+		variable = expression;
+		
+	declaration with initialization:
+		type variable = expression;
+	
+can be good to define constants at the beginning of the program in ints/doubles/etc, so that if/when you need to change them, it's possible to change them in a single place and not in a bajillion different places.	
+
+	Arithmetic Expressions
+	* / %
+	+ -
+	<< >>
+	
+	uses PEMDAS usually
+	
+	The type of calculation made depends on the type of operands involved - if both are int, the result type is int. If either one is a double, it's a double expression.
+	EXCEPT division. Division can end up in 
+	
+	14.0 / 5.0 => 2.8
+	
+	14.0 / 5 => 2.8
+
+	14 / 5.0 => 2.8
+	
+	14 / 5 => 2
+
+	14 % 5 => 4
+
+	double x = 3.1 + 14 / 5; //this will be 5.1, not 5.9
+	double y = 3 + 2; // y is 5.0
+	int z = 14.0 / 5; // z is 2, not 3
+	
+	int a = 10;
+	int b = a*a;
+	int c = 25/(b-100); // this is undefined
+	
+	
+	
+	Types of data storage/variables
+
+	declaration: 
+	type    identifier;
+
+	double : from + or - 10^-308 to 10^308, up to 25 significant digits
+	int : from about -2 billion to 2 billion, restricted to integers
+
+	Variables have to start with a letter, can then be followed by 0 or more letters/digits/etc
+
+	Several different conventions:
+	Hours_worked
+	Hoursworked
+	hoursworked
+
+	Careful tho
+	expertsexchange.com
+
+
+
+
+
+
+Lecture 1 (Week 1)
+
+	The most basic, machine level of programming. It’s all just numbers swapping around that represent things
+
+	Memory: 5-digit numbers, first 2 are the instruction code and the last three are the address
+	There are 100 different codes, between 00 and 99, all do different things
+
+	0: 21004
+	1: 11005
+	2: 22006
+	3: 99999
+	4: 00014
+	5: 00055
+	6: 12456 ------> 00069
+	… 
+
+
+	CPU has a bit of memory too, in the shape of these things
+	Accumulator: 87649
+	Instruction Counter: 009
+	Sequences by a fixed amount (1) every time a loop is completed
+
+	Operation
+	Code             address
+	21                004
+
+	Takes the address and selects 1 of 100 circuits, based on the code. Here it’s circuit 21
+
+	21: Copy the number at the indicated memory address into the accumulator
+	11: add the number at the indicated memory location to the accumulator
+	22: Copy the number in the accumulator into the indicated memory location
+	99: HALT (address part is ignored)
+
+	This is machine language. This is the ONLY kind of programming language computers can execute. Programming IDEs convert programming languages we know into instructions resembling this (like assembly) and run it.
+
+	Doing these three loops result in taking a number, adding a number to it, and storing the result back in the memory. Here it’s 14 + 55 = 00069, stored in location 6
+
+	The new number is put in to the accumulator, and the old one is gone
+	Storing something in a variable erases what was stored in it before, ofc
+	ALU (arithmetic logic unit)
+
+	Ticks instruction counter up by one
+
+	Take new instruction counter, repeat with new code
+
+
+	Quick program from the 50s ex
+
+	load price
+	Add fees
+	Store total
+	halt
+
+	Then, encode instructions into numbers and make it runnable
+
+	People began to program things that would do this ^^ for you, bc it’s a simple mechanical process. Enter: Programming Languages.
+
+		load price
+		add fees
+		store total
+		halt
+	price data 55
+	fees data 13
+	total data
+
+
+	Assembly language
+	A program written in assembly language is assembled into a machine language program by an assembler
+
+
+
+	Back in the day (the 50s) there were a few companies making computers, but every single one of them had a different machine language. So basically people got locked in to a specific brand
+
+	The first semblance of a unified language that really caught on was FORTRAN, in 1977
+
+	> integer price = 55
+	> integer fees = 13
+	> integer total = price + fees
+
+	Not tied to any specific architecture
+
+	Higher-level language. A program written in a higher-level language is compiled into a machine language program by a compiler.
+
+	2 steps: translate into machine language, then execute
+
+	Modern compilers will compile and run code faster than people writing code in assembly languages - but it took a while for that to happen, so for a bit ppl were still using assembly languages over other compilers
+
+
+	C    C++     Objective-C    Java    C#    Swift    Python(kinda)        Perl    Ruby
+	All of these are in the same general family as C, and most were spawned from C
+
+	C is a little outdated, C++ is C but better. Java is C++ for people who hate pointers, Objective-C became the basis for Apple product.
+
+	Bjarne Stroustrup developed C++
+	1980 - Development Versions
+	1985 - Released to the greater world, became popular.
+	1998 - ISO C++ Standard released, called C++98
+	2011 - Revision, Called C++11
+	2014 - Revision, relatively the same, C++14
+	2017 - Revision, bigger, C++17
+	2020 - Revision expected, C++20
+
+	(every 3 years now)
+	Very few of these revisions have any impact at all on this course
+
+
+
+
+
+
+Lecture 0
+
+	Hello there!
+	It’s a C++ class
+
+	Midterms: October 25, November 15 (thursdays)
+	Final: December 8 (sat)
+
+	http://cs.ucla.edu/classes/fall18/cs31
+
+	History of programming and stuff
+
+	Looms, fabric weaves
+	Jacquard weaving
+
+	Calculating logs, building a machine to make it more efficient - lord byron’s daughter, Ada Lovelace. Widely considered the first programmer
+	The Analytical Engine
+
+	Making the US census more efficient, 1880s. 
+	Census machine
+
+	The ENIAC - first general purpose electronic computer
+	Original six programmers of the ENIAC:
+	Kathleen McNulty
+	Frances Bilas
+	Betty Jennings
+	Ruth Lichterman
+	Elizabeth Snyder
+	Marlyn Wescoff
+
+	The internet: millions of independently owned devices and machines networking together
+	Ofc
+
+
+	Computer Stuff
+	Central Processing Unit (CPU)
+	Responsible for doing operations - adding numbers, comparing stuff
+
+	Memory (RAM)
+	High-speed memory, holds the data that programs operate on (and most of the program nowadays) 
+	Stores numbers in an array. Can ask for a value in a location, or store a number in a location. That’s it
+	Fundamentally, all that can be stored are integers.
+
+
+	Saving Non-Integers to the memory
+	decimals/floats
+	43.29 ----> 43  29
+	22 7 ---> 22/7
+	Dominant way of storing is the scientific notation method: 4329  -2   translates to 4329 * 10^-2
+	String:
+	Hello
+	Associate each letter with a number (like ASCII) and then store the individual numbers
+	H -> 72
+	e -> 101
+	l l -> 108, 108
+	o -> 111
+	space -> 32
+	See ASCII table
+	American Standard Code for Information Interchange
+	IBM used a different scheme, EBCDIC
+	Unicode
+	Translating chinese, japenese, things like that with tens of thousands of characters, it’s hard. - use unicode
+
+	Representing Audio? Use a microphone
+	Microphone detects changes in air pressure and represents it as changes in voltage
+	You get the data, and can use sampling to decode
+	Sample frequently, get the voltage and store the number. Then, when you need to play it back convert the numbers into a changing voltage electrical signal, and run it through a device that translates that into changes in air pressure (speaker)
+	The more you sample the better it sounds, sample enough so that nobody can detect a difference
+
+	Representing a picture?
+	Use pixels. Divide the image into lil squares, and assign numbers to each pixel according to the color (RGB code)
+	Resolution is important, otherwise you aint gonna see shit
+	Greyscale - use bytes between 0 and 255, white and black
+	RGB, use three bytes between 0 and 255, one for each of Red, Green, and Blue
+	JPEG hahahahahahaha
+
+	Representing a Video?
+	Use a series of pictures. Sampling basically to record them
+	Frames Per Second - 24 FPS is the norm for movies, 60 for games (fight me)
+
+	More efficient way of storing - store the first frame, then just store what’s different about the subsequent ones - saves a lot of data, compresses the video
+
+
+
+
+
+	Input/Output (I/O) Devices - ways to get data in and out of the computer, from the outside world 
+	(ex. Keyboard, mouse, hard drive, sensors, cameras, mics - input) 
+	(ex. printer, screen, hard drive, actuator - output)

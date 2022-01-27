@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="1">
+    <builddir>practicecheck-cppcheck-build-dir</builddir>
+    <platform>Unspecified</platform>
+    <importproject>../../source/repos/Project7-zombiegame/Project7-zombiegame.sln</importproject>
+    <analyze-all-vs-configs>true</analyze-all-vs-configs>
+</project>

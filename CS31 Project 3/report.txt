@@ -1,0 +1,97 @@
+report.txt
+George Owen
+CS31 Project 3
+
+
+1. Obstacles Overcome
+I overcame several notable obstacles while writing this code. The most challenging part of the process was finding a way to denote where in the state results the character being checked is. This is necessary because the beginning of every state result contains two letters in a row, but everything after that up until a comma must not. I solved this by declaring a bool called "inPartyResults" that is set to true after a state code is inputted. While it is true, it will require the string to be of the proper format for party results, until a comma is reached and it is reset to false. The other most difficult part of this code was simply making sure every possible invalid input is accounted for. There are many strings which caused undefined behavior when inputted into my program, and I had to implement fixes for (hopefully) all of them.
+
+2. Code Description
+The two functions I wrote have relatively simple designs. The hasProperSyntax function is significantly more complicated than the tallySeats function, and works as follows:
+
+bool hasProperSyntax(takes a string)
+	make sure the code doesn't start or end in a comma
+
+	checking each character in the string:
+		
+		if the character is a comma
+			inPartyResults set to false, marking the beginning of another state forecast
+		
+		if the character is a letter
+			and the next character is a letter 
+				and inPartyResults is false
+					these characters form a state code
+					if the state code has invalid syntax (calls function provided by instructor)
+						invalid input
+					inPartyResults set to true
+				and inPartyResults is true
+					invalid input
+			else if inPartyResults is false
+				invalid input
+				
+		if the character is a digit
+			and it's in the Party Results
+				if it's not followed by another digit or a letter
+					invalid input
+				if there are more than 2 digits in a row
+					invalid input
+			else
+				invalid input
+			
+		if the character isn't any of those things
+			invalid input
+			
+	return true, if it made it to here
+	
+	
+The majority of the hasProperSyntax function serves to check various ways in which the string can be invalid. Some of the lines may seem superfluous but serve to catch at least one case which caused the code to behave improperly. The function tallySeats is comparably simpler:
+	
+int tallySeats(takes string, character, and a reference int)
+	if the string doesn't have the proper syntax (calls hasProperSyntax)
+		return 1
+	if the character isn't a letter
+		return 2
+	
+	checking each character in the string:
+		if the string character matches the given character, and is preceded by a digit
+			add that preceding digit to the reference int
+			if the preceding digit has another digit before it
+				add that digit * 10 to the reference int (signifies the 10s place)
+	
+	return 0
+	
+	
+	
+	
+3. Test Cases
+
+These are strings which can be used to test the hasProperSyntax() function:
+
+	Proper syntax: "CT5D,NY9R17D1I,VT,ne3r00D"
+	Empty string: ""
+	String containing spaces: "CT5D, NY9R17D1I, VT, ne3r00D"
+	String with a comma at the beginning: ",CT5D,NY9R17D1I,VT,ne3r00D"
+	String with a comma at the end: "CT5D,NY9R17D1I,VT,ne3r00D,"
+	String with 1 or more invalid state codes: "XY5D,ZP9R17D1I,VT,ne3r00D"
+	String where the party results contain more than 2 numbers in a row: "CT555D,NY9R170135D112I,VT,ne3r00D"
+	String where the party results contain multiple letters (party codes) in a row: "CT5DD,NY9RA17D1I,VTDR,ne3r00XD"
+	String that contains characters that aren't alphanumeric or commas: "CT$D,^9R&17D*1I,VT,(e3r00D"
+	String where the party results contain nonalphanumeric characters in tricky locations: "CT$D,NY1R&17D*1I,VT,NE3r00D"
+	String containing multiple predictions for the same party, in the same state cast: "CT5D6d,NY9R17r1R,VT6g9G,ne3r00D"
+	String containing state codes of varying capitalization: "CT5D,Ny9R17D1I,vT,ne3r00D"
+	String containing party results of varying capitalization: "CT5d,NY17d1I5r,VT,ne3r00D"
+	String that does not begin with a state code: "5DCT,9RNY17D1I,VT,ne3r00D"
+	String consisting of a single letter: "T"
+	String consisting of a single number: "5"
+	String without any commas: "CT5DNY9R17D1IVTne3r00D"
+
+These inputs can be used to test the tallySeats() function (format: string, character, variable):
+
+	(Any of the strings previously used to test hasProperSyntax(), 'd', seats)
+	Invalid character input: ("CT5D,NY9R17D1I,VT,ne3r00D", '$', seats)
+	Finding the number of D seats: ("CT5D,NY9R17D1I,VT,ne3r00D", 'D', seats)
+	Finding the number of seats for a party which is not present: ("CT5D,NY9R17D1I,VT,ne3r00D", 'X', seats)
+
+
+
+

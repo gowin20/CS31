@@ -1,0 +1,4 @@
+zombies.a1:Debug|Win32:C:/Users/gboow/source/repos/Project7-zombiegame/Project7-zombiegame/zombies.cpp
+zombies.a2:Release|Win32:C:/Users/gboow/source/repos/Project7-zombiegame/Project7-zombiegame/zombies.cpp
+zombies.a3:Debug|x64:C:/Users/gboow/source/repos/Project7-zombiegame/Project7-zombiegame/zombies.cpp
+zombies.a4:Release|x64:C:/Users/gboow/source/repos/Project7-zombiegame/Project7-zombiegame/zombies.cpp

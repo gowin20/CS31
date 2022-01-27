@@ -1,0 +1,85 @@
+report.txt
+
+a. 
+I overcame several notable obstacles while writing this program. When writing the makeProper() function, I initially struggled with finding a good way to check if the characters in all arrays were valid; I ended up defining a seperate function specifically for this that is called several times. In addition to this, my use of strcpy() to move the valid patterns to the beginning of the array didn't work when run in g++, because of memory overlap, so I ended up using the memmove function instead, which handles such problems.
+For the rate() function, the most difficult part by far was figuring out how to effectively compare words in the document to the patterns. I accomplished this by defining a new array and storing each word of the document in that. This is possible because there is a maximum size on the document of 250 chars, otherwise another solution would have to be found. In addition to this, figuring out how to check if a pattern has already been counted was difficult. I ended up defining another new array which contained bool values corresponding to each pattern, and made the pattern counting conditional on the value of this variable.
+
+b.
+Here's how my program is designed:
+
+makeProper():
+	declares nProperPatterns, which tracks the number of valid patterns
+	checking all nPattern values of each array:
+		if a pattern word is empty
+			ignore that pattern
+		if the pattern words contain no invalid characters and the separation isn't negative,
+			if the pattern is a duplicate of an already assessed pattern:
+				ignore it, but if the separation value is larger use that value for the proper pattern
+			otherwise, copy all values to the beginning of each array and sequence nProperPatterns by one
+	return nProperPatterns
+
+rate():
+	(basically just formats the document, then checks it for patterns)
+
+	declares several values, including a dummy array called properDocument where the document's words will be stored.
+	
+	checking each character in the document:
+		if it's a letter,
+			make it lowercase and put it in properDocument, sequence the letter value.
+		if it's a space,
+			sequence the word where you are storing letters in properDocument
+		if it's a newline,
+			sequence the word, then break from the loop.
+
+	finding the patterns:
+	checking each word in properDocument:
+		comparing the checked word to each possible pattern:
+			if word1 is a match
+				and word2 is within seperation words on either side of it
+					and it's not a pattern that has already been found
+						it's a match! increase rating by one
+
+c.
+Test Cases:
+
+Cases for makeProper(char word1[][MAX_WORD_LENGTH + 1], char word2[][MAX_WORD_LENGTH + 1], int separation[], int nPatterns)
+
+(format: word1, word2, separation, number of patterns)
+
+	Already properly formatted patterns: {"mad", "deranged", "nefarious", "have"} {"scientist", "robot", "plot", "mad"} {1, 3, 0, 12} 4
+	Patterns contain an empty String: {"", "deranged", "nefarious", "have"} {"scientist", "robot", "", "mad"} {1, 3, 0, 12} 4
+	Patterns contain invalid characters: {"m4d", "deranged", "n-furryious", "have"} {"scientist", "ro    bot", "plot", "mad"} {1, 3, 0, 12} 4
+	Patterns contain varying capitalization: {"mAd", "dERANGed", "nefarious", "have"} {"scientist", "robot", "PLOT", "mad"} {1, 3, 0, 12} 4
+	There are several duplicate patterns: {"mad", "deranged", "mad", "scientist"} {"scientist", "robot", "scientist", "mad"} {1, 3, 0, 12} 4
+	A later duplicate pattern contains a larger value for separation: {"mad", "deranged", "mad", "scientist"} {"scientist", "robot", "scientist", "mad"} {1, 3, 0, 12} 4
+
+
+
+Cases for rate(const char document[], const char word1[][MAX_WORD_LENGTH + 1], const char word2[][MAX_WORD_LENGTH + 1], const int separation[], int nPatterns
+
+	(format: document, word1, word2, separation, number of patterns)
+	
+	Proper input: "The mad UCLA scientist unleashed a deranged evil giant robot.", {"mad", "deranged", "nefarious", "have"}, {"scientist", "robot", "plot", "mad"}, {1, 3, 0, 12}, 4
+	Lots of spaces in the document: "The mad UCLA scientist unleashed    a deranged robot.", {"mad", "deranged", "nefarious", "have"}, {"scientist", "robot", "plot", "mad"}, {1, 3, 0, 12}, 4
+	Invalid characters in the document: "The mad-UCLA 123456 uxc.,leashed a deran\Nged evil giant robot.", {"mad", "deranged", "nefarious", "have"}, {"scientist", "robot", "plot", "mad"}, {1, 3, 0, 12}, 4
+	Document is exclusively invalid characters: "**** 2018 ****", {"mad", "deranged", "nefarious", "have"}, {"scientist", "robot", "plot", "mad"}, {1, 3, 0, 12}, 4
+	Empty document: "", {"mad", "deranged", "nefarious", "have"}, {"scientist", "robot", "plot", "mad"}, {1, 3, 0, 12}, 4
+	Several instances of a pattern are present: "deranged deranged robot deranged robot robot", {"scientist", "robot", "plot", "mad"}, {1, 3, 0, 12}, 4
+	Very large separation values: "The mad UCLA scientist unleashed a deranged evil giant robot.", {"mad", "deranged", "nefarious", "have"}, {"scientist", "robot", "plot", "mad"}, {15, 31, 59, 1200}, 4
+	Document contains words longer than 20 characters: "The mad UCLA scientist went yeet and said supercalifragilisticakesbealidocious", {"mad", "deranged", "nefarious", "have"}, {"scientist", "robot", "plot", "mad"}, {1, 3, 0, 12}, 4
+	Document contains similar words but not matching words: "The nomad UCLA scientist unleashed a deranged evil giant robot.", {"mad", "deranged", "nefarious", "have"}, {"scientist", "robot", "plot", "mad"}, {15, 31, 59, 1200}, 4
+	Negative number of Patterns: "The nomad UCLA scientist unleashed a deranged evil giant robot.", {"mad", "deranged", "nefarious", "have"}, {"scientist", "robot", "plot", "mad"}, {15, 31, 59, 1200}, -4
+	
+
+
+
+
+
+
+
+
+
+
+
+
+

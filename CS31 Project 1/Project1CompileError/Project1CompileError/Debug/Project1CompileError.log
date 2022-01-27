@@ -1,0 +1,7 @@
+﻿  compile_error.cpp
+c:\users\gboow\desktop\cs31 project 1\project1compileerror\project1compileerror\compile_error.cpp(14): error C2146: syntax error: missing ';' before identifier 'cin'
+c:\users\gboow\desktop\cs31 project 1\project1compileerror\project1compileerror\compile_error.cpp(31): error C2146: syntax error: missing ';' before identifier 'cout'
+c:\users\gboow\desktop\cs31 project 1\project1compileerror\project1compileerror\compile_error.cpp(30): warning C4552: '>': result of expression not used
+c:\users\gboow\desktop\cs31 project 1\project1compileerror\project1compileerror\compile_error.cpp(31): error C2429: language feature 'init-statements in if/switch' requires compiler flag '/std:c++17'
+c:\users\gboow\desktop\cs31 project 1\project1compileerror\project1compileerror\compile_error.cpp(31): error C2059: syntax error: '<<'
+c:\users\gboow\desktop\cs31 project 1\project1compileerror\project1compileerror\compile_error.cpp(32): error C2181: illegal else without matching if

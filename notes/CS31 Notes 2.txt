@@ -1,0 +1,437 @@
+CS31 Notes Pt 2
+
+Week 5+
+
+
+c strings have '\o' at the end to delineate the end of a string
+
+vector<int> k, 				//a dynamic array, that can change size and stuff
+
+std::array<double 5> b;
+
+^ c++ array. 
+b[1]
+possible to do b.size()
+
+
+
+string is a vector of characters.
+
+tosum problem
+
+VERY common interview question
+use a hash table
+
+bool isPair(int foo[], int size, int k);
+
+
+
+dynamic memory allocation:
+
+the stack and the heap
+stack:
+
+
+int foo(int n)
+{
+	int k = 5
+	chat c[] = "Hello";
+}
+the value of k will go on the stack, if it doesn't go in the register
+when a function is called you have to allocate more memory for it, so the stack grows
+the characters of c[] go on the stack too. However, the stack is limited (see stackoverflow). If you go over the stack limit, the program will crash RIP. 
+
+In c++, use:
+operator new
+
+in c, use:
+
+malloc
+and 
+dealloc
+
+only use it if you know what you're doing, though, because you have to manually manage memory
+when you're done with new, call delete. Otherwise you could cause a memory leak
+Other languages have something called garbage collection that prevents it. The problem is that it can cause delays and stuff at inopportune times, so C/C++ is a lot more efficient in those regards.
+
+hash tables:
+
+
+
+
+
+
+
+
+
+
+
+
+template<class _T>
+void swap(_T& a, _T& b)
+{
+	_T tempt = a;
+	a = b;
+	b = temp;
+}
+
+
+
+
+
+
+
+void diagonal(int a[][], int n)
+{
+	for (int i = 0; i != size(a), i++)
+	{
+		cout << a[i][i];
+	}
+}
+
+
+
+
+
+
+Discussion W5
+
+Array
+
+<type> <name>[size]
+
+int a[4] =
+{1, 2, 3, 4}
+ (0  1  2  3) <- location in array
+
+a[i] is the i-th variable, i is a positive integer const
+
+const int N = 10;
+ant a[N];
+
+each element of the array is a variable duh
+
+cannot set the size of the array to anything less than the number of elements in the initialization statement. More than that is ok tho
+
+
+Multidimensional arrays
+
+int i[ROWS][COLUMNS];
+
+int i[ROWS][COLUMNS] = {
+{row_00, row_01, ...}
+{row_10, row_11, ...}
+...,
+{row_i0, row_i1, ...}
+}
+
+void fibo10(int fib[]);
+can pass the size of the array as an int n
+void fibo10(int fib[], int n);
+
+void fibo10(int fib[][], int n);
+
+
+
+
+bool isValidDate(int y, int m, int d)
+{
+	const int daysInMonth[12] = 
+	{
+		31, 28, 31, 30, 31, 30,
+		31, 31, 30, 31, 30, 31
+	};
+	
+	...
+	
+	if (m < 1 || m > 12 || d < 1)
+		return false
+	if (m != 2)
+		return d <= daysInMonth[
+	
+	
+}
+
+
+const int MAX_NUMBER_OF_SCORES = 10000;
+int scores[MAX_NUMBER_OF_SCORES];
+int nScores = 0;
+int total = 0;
+cout << "Enter the scores (negative when done): ";
+for (;;)
+{
+	int s;
+	cin >> s;
+	if (s < 0)
+		break;
+	if (nScores == MAX_NUMBER_OF_SCORES)
+	{
+		cout << "This program is only equipped to handle " << MAX_NUMBER_OF_SCORES << " scores." << endl;
+		cout << "Continuing with just the first " << MAX_NUMBER_OF_SCORES << " values." << endl; 				
+							//if your program is gonna take some sort of recovery action, inform the user as to what it is you're doing\
+		break;
+	}
+	total += s;
+	scores[nScores] = s;
+	nScores++;
+}
+if (nScores == 0)
+	cout << "There were no scores, so no statistics" << endl;
+else
+{
+	double mean = static.cast<double>(total)/nScores;
+	cout << "The average of all the scores is " << mean << endl;
+	double sumOfSquares = 0;
+	for (int k = 0; k < nScores; k++)
+	{
+		double diff = scores[k] - mean;
+		sumOfSquares += diff * diff;
+	}
+	cout << "The std. deviation is " << sqrt(sumOfSquares/nScores) << endl;
+
+}
+
+
+
+
+int main()
+{
+	const int MAX_NUMBER_OF_SCORES = 10000;
+	int scores[MAX_NUMBER_OF_SCORES];
+	int nScores = 0;
+			... //fill up the array
+	double m = computeMean(scores, nScores)
+	
+	..
+	int stuff[100];
+		... //fill up the array
+	double m2 = computeMean(stuff, 100);
+}
+
+
+//no way you can ask for how many elements are in an array, just by using the array name.
+//in a function from an array parameter itself, you know nothing about how many elements are in an array. 
+double computeMean(const int a[], int n) //const int a[] is an array of integers that the program promises not to modify.
+{
+	if (n == 0)
+		return 0;
+	int total = 0;
+	for (int k = 0; k < n; k++)
+	{
+		total += a[k];
+	}
+	return static.cast<double>(total) / n; 
+						//creating a temporary double named total and dividing it by n, returns the result of that. this is how you convert ints into doubles for computations
+}
+
+void setFirst(int a[], int n, int value)
+{
+	if (n >= 1)
+		a[0] = value;
+	... computeMean(a, n) ...
+	
+}
+
+
+
+===================================================================================================
+				C++ Strings
+===================================================================================================
+
+#include <string>
+using namespace std;
+
+string t = "Ghost"
+string s; //empty string
+
+for (int k = 0; k != t.size; k++)
+	cout << t[k] << endl;
+	
+cout << t;
+getline(cin, s);
+
+s = t; //sets s to Ghost
+s += "!!!"; // sets s to Ghost!!!
+
+if (t < s)
+	...
+
+===================================================================================================
+								C Strings
+===================================================================================================
+
+Comparing Strings:
+	If both strings are the same length and have the same characters at the same point, they're equal. It compares letters based on their encoded values
+	Ghostwriter
+	Ghoul
+	Ghostwriter < Ghoul
+	The lengths don't matter, it's the encoded values of the characters at each location in the string.
+	Creates the same order that a dictionary would.
+	
+	Ghostwriter > Ghost
+
+
+find the first character that's a zero byte ---> count how many interesting characters there are in a string.
+
+C Strings are just arrays of chars
+
+
+#include <cstring>
+
+char t[10] = { 'G', 'h', 'o', 's', 't');
+char t[10] = "Ghost";
+char s[100] = "";
+
+	/*
+	for (int k = 0; k != strlen(t); k++) //don't do this
+		cout << t[k] << endl;
+	*/
+for (int k = 0; t[k] != '\0'; k++)
+	cout << t[k] << endl;
+	
+cout << t;
+cin.getline(s, 100);
+
+//s = t; // gives you an error: can't assign arrays
+	strcpy(s, t); //strcpy(destination, source)
+			//strcpy(t, "abcdefghij");
+
+strcat(s, "!!!");	//now s is "Ghost!!!"
+	
+//if (t < s) //this will compile properly but not function properly
+
+	... strcmp(a, b) ...
+			returns
+				negative if a comes before b
+				0 if a equals b
+				positive if a comes after b
+
+C++ strings: a OP b
+C strings: strcomp(a, b) OP 0
+
+
+Is a equal to b?
+	WRONG: if (strcmp(a, b)) //this yields the opposite result?
+	
+	RIGHT: if (strcmp(a, b) == 0)
+	
+Does a come before b?
+	WRONG: if (a < b) // will compile for C strings, but it doesn't do what you want
+	
+	RIGHT: if (strcmp(a, b) < 0)
+	
+void f(const char cs[])
+{
+	...
+}
+
+int main()
+{
+	string s = "Hello";
+	f(s); //won't compile, because this is a C++ string not a c string
+	f(s.c.str()); //works ok
+	
+	chat t[10] = "Ghost";
+	s = t; //s is now Ghost
+	s = "Wow"
+	t = s; //won't compile
+	t = s.c.str(); //also won't compile
+	strcpy(t, s.c.str()); //t is now Wow
+}
+
+const int x = 10;
+int y = 10;
+int z = x;
+
+
+
+
+
+Lil program action
+
+const int NWEEKS = 5;
+const int NDAYS = 7;
+
+int attendance[NWEEKS][NDAYS];
+
+cout << attendance[2][5];
+
+for (int w = 0; w < NWEEKS; w++)
+{
+	int t = 0;
+	for (int d = 0; d < NDAYS; d++)
+		t += attendance[w][d];
+	cout << "The total for week " << w << " is " << t << endl;
+}
+
+const string dayNames[NDAYS] =
+{
+	"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+};
+
+int grandTotal = 0;
+for (int d = 4 /* Friday */; d < NDAYS; d++)
+{
+	int t = 0;
+	for (int w = 0; w < NWEEKS; w++)
+		t += attendance[w][d];
+	cout << "The total for week " << w << " is " << t << endl;
+	grandTotal += t;
+}
+cout << "Over the course of " << NWEEKS << " weeks, weekend attendance was " << grandTotal << endl;
+
+
+double computeMean(const int a[], int n);
+
+double meanForADay(const int a[][NDAYS], int nRows, int dayNumber)
+{
+	if (nRows <= 0)
+		return 0;
+	int total = 0;
+	for (int r = 0; r < ; r++)
+		total += a[r][dayNumber];
+	return static.cast.double(total) / nRows;
+}
+
+int main()
+{
+	int attendance[NWEEKS][NDAYS];
+	...
+	double meanFri = meanForADay(attendance, NWEEKS, 4 /* Friday */);
+	...
+}
+
+
+
+	
+
+
+	
+	
+	
+
+
+
+
+
+start
+get string
+
+run through string
+	check for valid state codes
+	check for valid party inputs
+	
+	/*
+	string data = "CT5D,NY9R17D1I,VT,ne3r00D";
+	char part;
+	int seatTally = 0;
+	bool ret = hasProperSyntax(data);
+	if (ret)
+		cout << data << " has PROPER SYNTAX" << endl;
+	else
+		cout << data << " DOESNT HAVE PROPER SYNTAX" << endl;
+	cout << "enter the party for which you wish to tally seats: ";
+	cin >> part;
+	tallySeats(data, part, seatTally);
+	cout << "The " << part << " party is projected to get " << seatTally << " seats." << endl;
+*/

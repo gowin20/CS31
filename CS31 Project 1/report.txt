@@ -1,0 +1,27 @@
+report.txt
+
+Input bugs found in step 5:
+
+	Even though the program explicitly only accepts integer values, it is possible to enter several values that will produce 
+	nonsensical or incorrect results. The first and perhaps most obvious of these is negative numbers. The program still accepts them
+	and runs properly, but the results are a little silly. For example, if there is a sign difference between the total people surveyed and the
+	amount voting for Newson/Cox, the percentage will be a negative number. Really, any introduction of negative integers into the program
+	causes confusion and alarm. Entering the total number of people surveyed as zero also causes an error - you're dividing by zero, so the
+	percentages both show as 'inf%'.
+
+Logic errors introduced in step 6:
+
+	">" sign changed to "<" on line 30 - an easy mistake to make, that will cause the program to always give a bad/incorrect prediction.
+
+	pctNewson and pctCox calculations on lines 20/21 changed - they're now dividing numberSurveyed by forNewson/forCox, instead of the other way around.
+	This causes the percentages to be completely incorrect, as that's not how you calculate percentages. I don't know if this is a "common"
+	mistake, but I've certainly done this several times while attempting to write code.
+
+Compiler errors introduced in step 7:
+
+	Semicolon at the end of line 13 removed.
+	The simplest and most common compiler error is certainly forgetting to add a semicolon at the end of a statement. This will cause the program to
+	fail to compile, and if you don't use debugging software you might be scratching your head for a while looking for your error.
+
+	Closing parentheses on line 30 removed.
+	Once again, a semi-common syntactic mistake that will cause the program to fail to compile.

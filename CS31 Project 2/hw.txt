@@ -1,0 +1,123 @@
+hw.txt
+
+1.
+	string grendel = "endl";
+	cout << "endl";
+	cout << grendel;
+	cout << endl;
+	cout << "grendel";
+	
+output:
+	endlendl
+	grendel
+
+	
+2.
+	#include <iostream>
+	using namespace std;
+
+	int main()
+	{
+	    int side;
+
+	    cout << "Enter a number: ";
+	    cin >> side;
+
+	    for (int i = 0; i < side; i++)
+	    {
+			for (int j = i; j >= 0; j--)
+			{
+				cout << "#";
+			}
+			cout << "\n";
+	    }
+	}
+	
+This program creates a triangle of hashtags with a height and witdth equal to the entered number.
+
+
+3.
+	#include <iostream>
+	using namespace std;
+
+	int main()
+	{
+	    int side;
+
+	    cout << "Enter a number: ";
+	    cin >> side;
+
+	    for (int i = 0; i < side; i++)
+	    {
+			int j = i;
+			while (j >= 0) 
+			{
+				cout << "#";
+				j--;
+			}
+			cout << "\n";
+	    }
+	}
+	
+	
+4.
+	#include <iostream>
+	using namespace std;
+
+	int main()
+	{
+		int side;
+
+		cout << "Enter a number: ";
+		cin >> side;
+		
+		if (side > 0) 
+		{
+			int i = 0;
+			do
+			{
+				int j = i;
+				while (j >= 0)
+				{
+					cout << "#";
+					j--;
+				}
+				cout << "\n";
+				i++;
+			} while (i < side);
+		}
+	}
+	
+	
+5.
+	if (codeSection == 281)
+			cout << "bigamy";
+	else if (codeSection == 321  ||  codeSection == 322)
+		cout << "selling illegal lottery tickets";
+	else if (codeSection == 383)
+		cout << "selling rancid butter";
+	else if (codeSection == 598)
+		cout << "injuring a bird in a public cemetery";
+	else
+		cout << "some other crime";
+		
+	Turned into a single switch statement:
+	
+	switch (codeSection)
+		{
+			case 281:
+				cout << "bigamy";
+				break;
+			case 321:
+			case 322:
+				cout << "selling illegal lottery tickets";
+				break;
+			case 383:
+				cout << "selling rancid butter";
+				break;
+			case 598:
+				cout << "injuring a bird in a public cemetery";
+				break;
+			default:
+				cout << "some other crime";
+		}

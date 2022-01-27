@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="659187862">
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Arena::m_zombies&apos; is not initialized in the constructor." verbose="Member variable &apos;Arena::m_zombies&apos; is not initialized in the constructor." cwe="398">
+            <location file0="C:\Users\gboow\source\repos\Project7-zombiegame\Project7-zombiegame\zombies.cpp" file="C:\Users\gboow\source\repos\Project7-zombiegame\Project7-zombiegame\zombies.cpp" line="274"/>
+            <symbol>Arena::m_zombies</symbol>
+        </error>
+        <error id="noCopyConstructor" severity="style" msg="Class &apos;Game&apos; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &apos;Game&apos; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file0="C:\Users\gboow\source\repos\Project7-zombiegame\Project7-zombiegame\zombies.cpp" file="C:\Users\gboow\source\repos\Project7-zombiegame\Project7-zombiegame\zombies.cpp" line="519"/>
+            <symbol>Game</symbol>
+        </error>
+        <error id="noOperatorEq" severity="style" msg="Class &apos;Game&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &apos;Game&apos; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." cwe="398">
+            <location file0="C:\Users\gboow\source\repos\Project7-zombiegame\Project7-zombiegame\zombies.cpp" file="C:\Users\gboow\source\repos\Project7-zombiegame\Project7-zombiegame\zombies.cpp" line="519"/>
+            <symbol>Game</symbol>
+        </error>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="row" lineNumber="160"/>
+    <functiondecl functionName="col" lineNumber="165"/>
+    <functiondecl functionName="move" lineNumber="170"/>
+    <functiondecl functionName="getAttacked" lineNumber="179"/>
+    <functiondecl functionName="row" lineNumber="217"/>
+    <functiondecl functionName="col" lineNumber="222"/>
+    <functiondecl functionName="age" lineNumber="227"/>
+    <functiondecl functionName="stand" lineNumber="232"/>
+    <functiondecl functionName="moveOrAttack" lineNumber="237"/>
+    <functiondecl functionName="isDead" lineNumber="260"/>
+    <functiondecl functionName="setDead" lineNumber="265"/>
+    <functiondecl functionName="rows" lineNumber="295"/>
+    <functiondecl functionName="cols" lineNumber="300"/>
+    <functiondecl functionName="player" lineNumber="305"/>
+    <functiondecl functionName="zombieCount" lineNumber="310"/>
+    <functiondecl functionName="numZombiesAt" lineNumber="315"/>
+    <functiondecl functionName="determineNewPosition" lineNumber="327"/>
+    <functiondecl functionName="display" lineNumber="358"/>
+    <functiondecl functionName="addZombie" lineNumber="427"/>
+    <functiondecl functionName="addPlayer" lineNumber="442"/>
+    <functiondecl functionName="attackZombieAt" lineNumber="453"/>
+    <functiondecl functionName="moveZombies" lineNumber="478"/>
+    <functiondecl functionName="play" lineNumber="544"/>
+    <functiondecl functionName="decodeDirection" lineNumber="584"/>
+    <functiondecl functionName="randInt" lineNumber="597"/>
+    <functiondecl functionName="main" lineNumber="611"/>
+    <functiondecl functionName="clearScreen" lineNumber="637"/>
+    <functioncall functionName="Arena"/>
+    <functioncall functionName="FillConsoleOutputCharacter"/>
+    <functioncall functionName="Game"/>
+    <functioncall functionName="GetConsoleScreenBufferInfo"/>
+    <functioncall functionName="GetStdHandle"/>
+    <functioncall functionName="MAXCOLS"/>
+    <functioncall functionName="MAXROWS"/>
+    <functioncall functionName="MAXZOMBIES"/>
+    <functioncall functionName="Player"/>
+    <functioncall functionName="STD_OUTPUT_HANDLE"/>
+    <functioncall functionName="SetConsoleCursorPosition"/>
+    <functioncall functionName="Y"/>
+    <functioncall functionName="Zombie"/>
+    <functioncall functionName="action"/>
+    <functioncall functionName="addPlayer"/>
+    <functioncall functionName="addZombie"/>
+    <functioncall functionName="age"/>
+    <functioncall functionName="ap"/>
+    <functioncall functionName="attackZombieAt"/>
+    <functioncall functionName="break"/>
+    <functioncall functionName="c"/>
+    <functioncall functionName="cPlayer"/>
+    <functioncall functionName="cin"/>
+    <functioncall functionName="clearScreen"/>
+    <functioncall functionName="col"/>
+    <functioncall functionName="cols"/>
+    <functioncall functionName="const"/>
+    <functioncall functionName="continue"/>
+    <functioncall functionName="csbi"/>
+    <functioncall functionName="decodeDirection"/>
+    <functioncall functionName="default"/>
+    <functioncall functionName="determineNewPosition"/>
+    <functioncall functionName="dir"/>
+    <functioncall functionName="display"/>
+    <functioncall functionName="distro"/>
+    <functioncall functionName="dwCharsWritten"/>
+    <functioncall functionName="dwConSize"/>
+    <functioncall functionName="exit"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="g"/>
+    <functioncall functionName="generator"/>
+    <functioncall functionName="getAttacked"/>
+    <functioncall functionName="getline"/>
+    <functioncall functionName="hConsole"/>
+    <functioncall functionName="i"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="isDead"/>
+    <functioncall functionName="k"/>
+    <functioncall functionName="m_col"/>
+    <functioncall functionName="m_damaged"/>
+    <functioncall functionName="m_nZombies"/>
+    <functioncall functionName="m_row"/>
+    <functioncall functionName="max"/>
+    <functioncall functionName="min"/>
+    <functioncall functionName="move"/>
+    <functioncall functionName="moveOrAttack"/>
+    <functioncall functionName="moveZombies"/>
+    <functioncall functionName="nCols"/>
+    <functioncall functionName="nRows"/>
+    <functioncall functionName="nZombies"/>
+    <functioncall functionName="nullptr"/>
+    <functioncall functionName="numZombiesAt"/>
+    <functioncall functionName="play"/>
+    <functioncall functionName="player"/>
+    <functioncall functionName="r"/>
+    <functioncall functionName="rPlayer"/>
+    <functioncall functionName="randInt"/>
+    <functioncall functionName="rd"/>
+    <functioncall functionName="return"/>
+    <functioncall functionName="row"/>
+    <functioncall functionName="rows"/>
+    <functioncall functionName="setDead"/>
+    <functioncall functionName="size"/>
+    <functioncall functionName="stand"/>
+    <functioncall functionName="swap"/>
+    <functioncall functionName="switch"/>
+    <functioncall functionName="this"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="upperLeft"/>
+    <functioncall functionName="wchar_t"/>
+    <functioncall functionName="while"/>
+    <functioncall functionName="zombieCount"/>
+    <functioncall functionName="zomnum"/>
+  </FileInfo>
+</analyzerinfo>

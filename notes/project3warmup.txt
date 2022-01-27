@@ -1,0 +1,252 @@
+1. 
+int square(int n)
+{
+    return n*n;
+}
+
+int main()
+{
+    for (int k = 1; k <= 6; k++)
+        cout << "The square of " << k << " is " << square(k) << endl;
+}
+
+Output:
+	The square of 1 is 1
+	The square of 2 is 4
+	The square of 3 is 9
+	The square of 4 is 16
+	The square of 5 is 25
+	The square of 6 is 36
+	
+	
+2.
+int square(int n)
+{
+    return n*n;
+}
+
+int main()   // This program contains incorrect code!!
+{
+    cout << "Enter an integer: ";
+    int k;
+    cin >> k;
+    cout << "The square of " << k << " is " << square(int k) << endl;
+}
+
+When calling the square() function, you don't need to define the fact that the input is an int. Square will always accept exactly one input, int n. by saying square(int k), it's parsing int and k as seperate arguments. You also need a comma if you're putting in 2 inputs
+
+
+3.
+int main()   // This program contains incorrect code!!
+{
+    int square(int n)
+    {
+        return n*n;
+    }
+
+    cout << "Enter an integer: ";
+    int k;
+    cin >> k;
+    cout << "The square of " << k << " is " << square(k) << endl;
+}
+
+The function square is defined within int main, and not outside of it. That means when you call it bad juju happens.
+You can't define a function within a function? You can call a function, but you can't define a big boy function within a big boy function.
+
+
+4.
+int factorial(int n)
+{
+    int prod = 1;
+    for (int i = 2; i <= n; i++)
+        prod *= i;
+    return prod;
+}
+
+int main()
+{
+    for (int k = 1; k <= 6; k++)
+        cout << "The factorial of " << k << " is " << factorial(k) << endl;
+}
+
+Output:
+	The factorial of 1 is 1
+	The factorial of 2 is 2
+	The factorial of 3 is 6
+	The factorial of 4 is 24
+	The factorial of 5 is 120
+	The factorial of 6 is 720
+
+	
+5.
+void printFactorial(int n)
+{
+    int prod = 1;
+    for (int i = 2; i <= n; i++)
+        prod *= i;
+    cout << "The factorial of " << n << " is " << prod << endl;
+}
+
+int main()
+{
+    for (int k = 1; k <= 6; k++)
+        printFactorial(k);
+}
+
+Output:
+	The factorial of 1 is 1
+	The factorial of 2 is 2
+	The factorial of 3 is 6
+	The factorial of 4 is 24
+	The factorial of 5 is 120
+	The factorial of 6 is 720
+
+The output of this program is the same as the one in question 4. Between the two, the factorial function is definitely more versatile than printFactorial, as printFactorial's only function is to find the factorials and then print them to the terminal. factorial simply returns the factorialized number, which allows for actual calculations and other applicable uses of the function.
+
+
+6.
+int countChars(string s, char c)
+{
+    int total = 0;
+    for (int k = 0; k != s.size(); k++)
+    {
+        if (s[k] == c)
+            total++;
+    }
+    return total;
+}
+
+int main()
+{
+    cout << countChars("abracadabra", 'a') << endl;
+    int n = 10 * countChars("99 Cent Only", '9') + 5;
+    cout << n << endl;
+    cout << countChars("O Rose, thou art sick!", 'f') << endl;
+}
+
+Output:
+	5
+	25
+	0
+	
+
+7.
+int countChars(string s, char c)
+{
+    int total = 0;
+    for (int k = 0; k != s.size(); k++)
+    {
+        if (s[k] == c)
+            total++;
+    }
+    return total;
+}
+
+int main()   // This program contains incorrect code!!
+{
+    cout << countChars('s', "She sells seashells down by the seashore") << endl;
+}
+
+The when the countChars function is called in the main routine, the arguments are inputted in the incorrect order. countChars takes a string then a char, and it's being given a char then a string.
+
+
+8.
+bool contains(string s, char c)
+{
+    for (int k = 0; k != s.size(); k++)
+    {
+        if (s[k] == c)
+            return true;
+    }
+    return false;
+}
+
+int main()
+{
+    if (contains("Computer Science 31", '3'))
+        cout << "W";
+    if ( ! contains("Smallberg", 'x'))
+        cout << "o";
+    if (contains("Smallberg", 'l'))
+        cout << "w";
+    if (contains("Start your CS 31 projects early!", ' '))
+        cout << "!" << endl;
+}
+
+Output:
+	Wow!
+
+
+9.
+bool contains(string s, char c)  // This code is suspect
+{
+    for (int k = 0; k != s.size(); k++)
+    {
+        if (s[k] == c)
+            return true;
+        else
+            return false;
+    }
+}
+
+int main()
+{
+    if (contains("xyz", 'x'))
+        cout << "x";
+    if (contains("xyz", 'y'))
+        cout << "y";
+    cout << endl;
+}
+
+This program outputs "x" instead of "xy" because the function contains() actually only checks the first character of the string. Because the 'return false' statement is inside the for loop, the code will return true if the character is found, and false if it isn't, for every character it checks. However, returning a value from a function stops the function, so contains() functionally only checks 'x' of 'xyz'.
+
+
+10.
+int countSpacesInFirstSentence(string s)  // This code is suspect
+{
+    int nSpaces = 0;
+    for (int k = 0; k != s.size(); k++)
+    {
+        if (s[k] == ' ')
+            nSpaces++;
+        else if (s[k] == '.')
+            return nSpaces;
+    }
+}
+
+int main()
+{
+    cout << countSpacesInFirstSentence("Call me Ishmael.") << endl;
+    cout << countSpacesInFirstSentence("I am Sam.  Sam I am.") << endl;
+    cout << countSpacesInFirstSentence("Where now? Who now? When now?") << endl;
+}
+
+This code is a little spooky because the countSpacesInFirstSentence() function requires a period to be present in order to return a value. If there isn't a period, the code will simply finish the for loop and exit with value 0? or value 1? depending on stuff. Basically, you should make sure that your function always returns a value no matter what, or some spoopy undefined behavior could happen.
+
+
+11. 
+string justLetters(string s)
+{
+    string result = "";
+    for (int k = 0; k != s.size(); k++)
+    {
+        if ( islower(s[k]) )
+            result += s[k];
+        if ( isupper(s[k]) )
+            result += tolower(s[k]);
+    }
+    return result;
+}
+
+int main()
+{
+    cout << justLetters("CS 31 began September 28.") << endl;
+}
+
+Output:
+	csbeganseptember
+
+
+
+
+

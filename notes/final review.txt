@@ -1,0 +1,149 @@
+cin >> car; accesses imput characters, ignores whitespace and the newline at the end of the input. used to get input from user
+
+-----------------
+c-strings: null-terminated
+
+C-String Functions
+strlen(s)
+strcpy(t,s)
+strncpy(t,s,n)
+strcat(t,s)
+strcmp(t,s)
+
+
+
+C String				C++ String
+
+strlen					a.size()
+strcpy					a = b
+strcat					a += b
+strcmp					if (a == b)
+
+
+-----------------
+
+if-else statements
+
+>
+>=
+<
+<=
+==
+!=		Not Equals
+&&		AND
+||		OR
+
+----------------
+Switch/ifelse (probably not in the final exam)
+----------------
+
+Loops - be able to convert between them
+while loop
+
+do-while loop
+
+functions/reference/scope
+
+------------------
+1-D array: (don't have to specify the size of array passed)
+void func(int X[], int length);
+
+int main()
+{
+	int a[10];
+	
+	func(a, 10);
+}
+
+2-D Array: (you need to define how many columns there are in the function declaration)
+void func(int x[][5], int length);
+
+int main()
+{
+	int a[10][5];
+	func(a, 10);
+}
+------------------
+
+function declaration (function prototype/signature)
+function body (function implementation)
+function call
+
+reference variable: an alias/another name for an already existing variable
+<type>& <name>
+
+--------------
+pointers/arrays
+--------------
+possible to treat an array like a pointer (because it IS a pointer)
+
+Equivalent:
+int findFirst(const string a[], int n, string target);
+int findFirst(const string* a, int n, string target);
+
+Pass by value: int foo(int n);
+
+Passs by reference: int foo(int &n);
+
+Pass by pointer: int foo(int a[]); OR int foo(int* a);
+
+
+pointer to pointer
+
+int** var
+
+int** 		int*		int
+address ==> address ==> value
+
+reference to pointer
+int* &pointer;
+
+
+--------------
+Struct: object in c++ that represent data structures, AKA variables/functions/etc organized under a categorizing identifier
+data members: data structures in a struct
+
+pointers to struct
+student *p
+can refer to a member of a struct by pointing to it and dereferencing it? i think
+
+gonna be a proportionately larger amount of questions involving classes/structs on the final, bc that's the stuff we've learned recently
+
+---------
+const
+---------
+int Cat::age() const
+{
+	//code
+}
+
+ban age() in class Cat from being anything which can attempt to alter variables
+cannot change any member variables in obj
+
+const int a = 4;
+this will always be 4
+
+
+void malloc(int*& k)
+{
+	k = new int[5];
+}
+
+
+
+
+
+Swap pointer:
+
+c++ way: swap(a, b);
+
+void swapPtr(int*& b, int*& a)
+{
+	int* t = b;
+	b = a;
+	a = t;
+}
+
+
+
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+    <cppcheck version="1.85"/>
+    <errors>
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &amp;#039;Arena::m_zombies&amp;#039; is not initialized in the constructor." verbose="Member variable &amp;#039;Arena::m_zombies&amp;#039; is not initialized in the constructor." sinceDate="12/6/2018">
+            <location file="..\..\source\repos\Project7-zombiegame\Project7-zombiegame\zombies.cpp" line="274"/>
+        </error>
+        <error id="noCopyConstructor" severity="style" msg="Class &amp;#039;Game&amp;#039; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &amp;#039;Game&amp;#039; does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)." sinceDate="12/6/2018">
+            <location file="..\..\source\repos\Project7-zombiegame\Project7-zombiegame\zombies.cpp" line="519"/>
+        </error>
+        <error id="noOperatorEq" severity="style" msg="Class &amp;#039;Game&amp;#039; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." verbose="Class &amp;#039;Game&amp;#039; does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)." sinceDate="12/6/2018">
+            <location file="..\..\source\repos\Project7-zombiegame\Project7-zombiegame\zombies.cpp" line="519"/>
+        </error>
+    </errors>
+</results>
